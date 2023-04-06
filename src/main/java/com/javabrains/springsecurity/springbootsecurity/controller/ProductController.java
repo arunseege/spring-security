@@ -1,13 +1,11 @@
 package com.javabrains.springsecurity.springbootsecurity.controller;
 
 import com.javabrains.springsecurity.springbootsecurity.dto.Product;
+import com.javabrains.springsecurity.springbootsecurity.entity.UserInfo;
 import com.javabrains.springsecurity.springbootsecurity.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +32,8 @@ public class ProductController {
     public Product getProductById(@PathVariable int id){
         return productService.getProduct(id);
     }
-
+    @PostMapping("/new")
+    public String addNewUser(@RequestBody UserInfo userInfo){
+        return productService.addUser(userInfo);
+    }
 }
